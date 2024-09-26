@@ -13,15 +13,17 @@ describe('Gateway service routes sanity test', () => {
 
     beforeEach(() => {
         serviceOverview.openPage()
-
     })
-
-    xit('Create, update, delete a rout', () => {
+    // Prerequisite: Ensure that `example_service` is created before running this test case.
+    // Note: This workflow duplicates the route section in `service.cy.js`.
+    // This spec is intended to be executed only locally and is used for testing report merging functionality.
+    xit('Create, update, delete a rout for an existed route', () => {
+        serviceOverview.doesServiceExist('example_service')
         serviceOverview.openServiceConfigPage('example_service')
         serviceConfig.switchToRoute()
         
         //Create a route, verify its information
-        routeOverview.clickAddRouteBtn()
+        routeOverview.clickAddRouteBtn() 
         routeEditor.setName('mocking')
         routeEditor.setPaths("/mock")
         routeEditor.clickSaveBtn()
