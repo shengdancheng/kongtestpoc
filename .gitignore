@@ -1,0 +1,6 @@
+package-lock.json
+node_modules/
+cypress/temp/
+cypress/screenshots/
+cypress/report/
+cypress/results/
