@@ -12,7 +12,7 @@
     "app:start":"docker-compose up -d",
     "app:stop":"docker-compose down",
     "e2e:run":"npm run reports:delete && npm run e2e:chrome-headed-run && npm run report:generate",
-    "e2e:run-github":"npm run e2e:chrome-headed-run && npm run report:generate"
+    "e2e:run-github":"npm run e2e:chrome-headed-run && mkdir ./cypress/report && npm run report:generate"
 
   },
   "keywords": [],
