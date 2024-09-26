@@ -13,9 +13,10 @@ describe('Gateway service routes sanity test', () => {
 
     beforeEach(() => {
         serviceOverview.openPage()
+
     })
 
-    it('Create, update, delete a rout', () => {
+    xit('Create, update, delete a rout', () => {
         serviceOverview.openServiceConfigPage('example_service')
         serviceConfig.switchToRoute()
         

@@ -18,7 +18,7 @@ class ServiceOverview {
      * Opens the "New Service" panel by clicking the add button.
      */
     openNewServicePanel() {
-        cy.get('.toolbar-button-container').click()
+        cy.get('.toolbar-button-container',{force: true}).click()
         cy.get('.form-section-title').eq(0).should('have.text', 'General Information')
     }
 

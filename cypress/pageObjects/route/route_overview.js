@@ -10,7 +10,7 @@ class RouteOverview {
      * Clicks the "Add Route" button to open the route creation form.
      */
     clickAddRouteBtn(){
-        cy.get('a[data-testid="toolbar-add-route"]').click()
+        cy.get('button.add-route-btn').click()
         cy.get('span.title').should('have.text', 'Create Route')
     }
 
