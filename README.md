@@ -83,4 +83,4 @@ These items listed will be more considered in future work.
 1. **Improved App Lifecycle Management**:
    Explore better ways to start/stop the Kong app, potentially leveraging the Cypress API [before:run](https://docs.cypress.io/api/plugins/before-run-api#__docusaurus_skipToContent_fallback)?
 2. **Enhanced Test Results Management**:
-   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/)),for easier tracking of build results.
+   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/),for easier tracking of build results.
