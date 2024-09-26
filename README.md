@@ -61,9 +61,9 @@ In UI automation, maintaining test scripts can become challenging when changes i
 
 | Page Object     | url |
 | :---        |    :----:   |
-| ServiceOverview     |  http://localhost:8002/default/services  | 
-| ServiceConfig   | Text        |
-| ServiceEditor  | Text        |
+| ServiceOverview     |  <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_overview.png" width="700" height="150" />| 
+| ServiceConfig   | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_config.png" width="700" height="300" />       |
+| ServiceEditor  |  <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_editor.png" width="700" height="300" />         |
 | RouteOverview  | Text        | 
 | RouteConfig  | Text        |
 | RouteEditor  | Text        |
