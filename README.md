@@ -69,6 +69,7 @@ In UI automation, maintaining test scripts can become challenging when changes i
 | RouteEditor  | Text        |
 
 **Test Case Implementation**
+
 One guiding principle is to ensure the correctness of each step in the automation process.
 
 For stability, the tests include validation steps after each action to verify that the system behaves as expected. For example, after clicking the "New Gateway Service" button on the service page, the test will ensure that the "New Gateway Service" page is correctly opened before proceeding to fill in the service details. This ensures that each step is performed successfully before moving on to the next, improving overall test reliability.
