@@ -64,9 +64,11 @@ In UI automation, maintaining test scripts can become challenging when changes i
 | ServiceOverview     |  <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_overview.png" width="700" height="150" />| 
 | ServiceConfig   | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_config.png" width="700" height="300" />       |
 | ServiceEditor  |  <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_editor.png" width="700" height="300" />         |
-| RouteOverview  | Text        | 
-| RouteConfig  | Text        |
-| RouteEditor  | Text        |
+| RouteOverview  | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/route_overview.png" width="700" height="300" />        | 
+| RouteConfig  | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/route_config.png" width="700" height="300" />        |
+| RouteEditor  | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/route_editor.png" width="700" height="300" />       |
+
+*(Note:In this project, the above pages are only considered during the design of the page objects.)*
 
 **Test Case Implementation**
 
