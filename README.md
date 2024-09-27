@@ -84,10 +84,4 @@ These items listed will be more considered in future work.
    Explore better ways to start/stop the Kong app, potentially leveraging the Cypress API [before:run](https://docs.cypress.io/api/plugins/before-run-api#__docusaurus_skipToContent_fallback) ?
 
 2. **Enhanced Test Results Management**:
-   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/)),for easier tracking of build results.
-
-3. **Enhanced github action workflow**:
-   Add a step for 'Failure Notifications' in the existing 'test' workflow to ensure that relevant stakeholders are notified if tests fail. You can integrate this using email or a Slack webhook.
-
-   Additionally, consider adding a workflow triggered by the 'pull_request' event. Running tests on pull requests ensures that code changes submitted by contributors or other branches are validated before being merged into the main branch.
-
+   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/),for easier tracking of build results.
