@@ -9,84 +9,81 @@ jobs:
     name: Cypress test
     runs-on: ubuntu-22.04
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    # Install Docker-Compose
-    - name: Install docker-compose
-      run: |
-        sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-        docker-compose --version
+      # Install Docker-Compose
+      - name: Install docker-compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
 
-    # install a specific version of Node using
-    # https://github.com/actions/setup-node
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version-file: .node-version
+      # Install a specific version of Node using
+      # https://github.com/actions/setup-node
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
 
-    # just so we learn about available environment variables GitHub provides
-    - name: Print env variables
-      run: |
-        npm i -g @bahmutov/print-env
-        print-env GITHUB
+      # Printe available environment variables GitHub provides
+      - name: Print env variables
+        run: |
+          npm i -g @bahmutov/print-env
+          print-env GITHUB
 
-    # Restore the previous npm modules and Cypress binary archives.
-    # In case there's no previous cache the packages will be downloaded
-    # and saved automatically after the entire workflow successfully finishes.
-    # See https://github.com/actions/cache
-    - name: Cache node modules
-      uses: actions/cache@v4
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      # Restore the previous npm modules and Cypress binary archives.
+      # In case there's no previous cache the packages will be downloaded
+      # and saved automatically after the entire workflow successfully finishes.
+      # See https://github.com/actions/cache
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
 
-    - name: Cache Cypress binary
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/Cypress
-        key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-cypress-${{ hashFiles('**/package-lock.json') }}
 
-    - name: install dependencies and verify Cypress
-      env:
-        # make sure every Cypress install prints minimal information
-        CI: 1
-      # print Cypress and OS info
-      run: |
-        npm ci
-        npx cypress verify
-        npx cypress info
-        npx cypress version
-        npx cypress version --component package
-        npx cypress version --component binary
-        npx cypress version --component electron
-        npx cypress version --component node
+      - name: Install dependencies and verify Cypress
+        env:
+          # make sure every Cypress install prints minimal information
+          CI: 1
+        # print Cypress and OS info
+        run: |
+          npm ci
+          npx cypress verify
+          npx cypress info
+          npx cypress version
+          npx cypress version --component package
+          npx cypress version --component binary
+          npx cypress version --component electron
+          npx cypress version --component node
 
-    # Starts local server, then runs Cypress tests and records results on Cypress Cloud
-    - name: e2e tests
-      run: |
-        npm run app:start
-        npm run e2e:run-github
-        npm run app:stop 
-      env:
-        TERM: xterm
+      # Starts local server, then runs Cypress tests
+      - name: E2E Tests
+        run: |
+          npm run app:start
+          npm run e2e:run-github
+          npm run app:stop
+        env:
+          TERM: xterm
 
-    # Save the report as an artifact
-    # https://github.com/actions/upload-artifact
-    - name: Upload Cypress report
-      if: always() # Ensure this runs even if tests fail
-      uses: actions/upload-artifact@v4
-      with:
-        name: Report
-        path: cypress/report
+      # Save screenshots as test artifacts
+      # https://github.com/actions/upload-artifact
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots
+          path: cypress/screenshots
 
-    # Save screenshots as test artifacts
-    # https://github.com/actions/upload-artifact
-    - uses: actions/upload-artifact@v4
-        # there might be no screenshots created when:
-        # - there are no test failures
-        # so only upload screenshots if previous step has failed
-      if: failure()
-      with:
-        name: screenshots
-        path: cypress/screenshots
+      # Save the report as an artifact
+      # https://github.com/actions/upload-artifact
+      - name: Upload Cypress report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Report
+          path: cypress/report

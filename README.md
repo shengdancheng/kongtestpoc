@@ -22,9 +22,9 @@ Follow these steps to clone the repository, install dependencies, and execute th
 git clone https://github.com/shengdancheng/kongtestpoc.git
 cd kongtestpoc
 npm ci # Install dependencies
-npm run app:start # Start Kong manager. http://localhost:8002/
+npm run app:start # Start Kong Gateway Manager. http://localhost:8002/
 npm run e2e:run # Run all test cases under folder cypress/e2e in chrome, then generate results under folder ./cypress/results and all-in-one report under folder ./cypress/report
-npm run app:stop # Stop Kong Manager.
+npm run app:stop # Stop Kong Gateway Manager.
 ```
 
 If you would like to run Cypress tests interactively, `cypress:open` is a [package.json](./package.json) script that starts a local webserver and then uses [cypress run](https://docs.cypress.io/guides/guides/command-line#cypress-run) to run Cypress in headed mode.You can pick individual tests to run.
@@ -59,7 +59,7 @@ In UI automation, maintaining test scripts can become challenging when changes i
 
 - Function names align with steps in manual test cases, so developers can easily find and reuse them, reducing the effort required to maintain both manual and automated tests.
 
-| Page Object     | url |
+| Page Object     | Page Screenshot|
 | :---        |    :----:   |
 | ServiceOverview     |  <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_overview.png" width="700" height="150" />| 
 | ServiceConfig   | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/service_config.png" width="700" height="300" />       |
@@ -68,7 +68,7 @@ In UI automation, maintaining test scripts can become challenging when changes i
 | RouteConfig  | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/route_config.png" width="700" height="300" />        |
 | RouteEditor  | <img src="https://github.com/shengdancheng/kongtestpoc/blob/main/img/route_editor.png" width="700" height="300" />       |
 
-*(Note:In this project, the above pages are only considered during the design of the page objects.)*
+*(Note:In this project, only the pages mentioned above are considered during the design of the page objects.)*
 
 **Test Case Implementation**
 
@@ -81,6 +81,13 @@ For stability, the tests include validation steps after each action to verify th
 These items listed will be more considered in future work.
 
 1. **Improved App Lifecycle Management**:
-   Explore better ways to start/stop the Kong app, potentially leveraging the Cypress API [before:run](https://docs.cypress.io/api/plugins/before-run-api#__docusaurus_skipToContent_fallback)?
+   Explore better ways to start/stop the Kong app, potentially leveraging the Cypress API [before:run](https://docs.cypress.io/api/plugins/before-run-api#__docusaurus_skipToContent_fallback) ?
+
 2. **Enhanced Test Results Management**:
    Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/)),for easier tracking of build results.
+
+3. **Enhanced github action workflow**:
+   Add a step for 'Failure Notifications' in the existing 'test' workflow to ensure that relevant stakeholders are notified if tests fail. You can integrate this using email or a Slack webhook.
+
+   Additionally, consider adding a workflow triggered by the 'pull_request' event. Running tests on pull requests ensures that code changes submitted by contributors or other branches are validated before being merged into the main branch.
+
