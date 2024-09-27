@@ -38,7 +38,7 @@ The automation test cases only cover these two workflow.
 
 ### Test Case Design
 
-Refer to [Gateway document](https://docs.konghq.com/gateway/latest/kong-manager/get-started/services-and-routes/), for designing test cases involving the addition, updating, and deletion of services and routes for existing services. These test cases should cover positive, negative, and edge cases. 
+Refer to [Gateway document](https://docs.konghq.com/gateway/latest/kong-manager/get-started/services-and-routes/), for designing test cases involving the addition, updating, and deleting services and routes for existing services. These test cases should cover positive, negative, and edge cases. 
 
 *(Due to domain knowledge limitation, mandatory properties and tag property are only covered in test workflow.Part of negative test case and edge test cases are based on my test experiment and assumption.)*
 
@@ -84,4 +84,9 @@ These items listed will be more considered in future work.
    Explore better ways to start/stop the Kong app, potentially leveraging the Cypress API [before:run](https://docs.cypress.io/api/plugins/before-run-api#__docusaurus_skipToContent_fallback) ?
 
 2. **Enhanced Test Results Management**:
-   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/),for easier tracking of build results.
+   Consider saving test results into a database and visualizing them using a dashboard tool like [Grafana](https://grafana.com/), for easier tracking of build results.
+
+3. **Enhanced Github Action Workflow**:
+   Add a step for 'Failure Notifications' in the existing 'test' workflow to ensure that relevant stakeholders are notified if tests fail. You can integrate this using Email or Slack.
+
+   Additionally, consider adding a workflow triggered by the 'pull_request' event. Running tests on pull requests ensures that code changes submitted by contributors or other branches are validated before being merged into the main branch.
