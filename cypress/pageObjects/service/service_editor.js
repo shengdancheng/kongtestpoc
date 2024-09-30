@@ -24,11 +24,6 @@ class ServiceEditor {
         cy.get('input[data-testid="gateway-service-url-input"]').should('have.value', upstreamURL)
     }
 
-    setUpstreamURL(upstreamURL) {
-        cy.get('input[data-testid="gateway-service-url-input"]').type(upstreamURL)
-        cy.get('input[data-testid="gateway-service-url-input"]').should('have.value', upstreamURL)
-    }
-
     /**
      * Sets a tag for the service.
      * @param {string} tagName - The tag to set for the service.
